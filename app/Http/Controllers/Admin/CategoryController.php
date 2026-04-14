@@ -40,7 +40,7 @@ class CategoryController extends Controller
         $data['img'] = $imgName;
         Category::create($data);
         if ($request->button == 'all') {
-            return redirect()->route('img.index')->with('successes', 'successful operation');
+            return redirect()->route('category.index')->with('successes', 'successful operation');
         } else {
             return redirect()->back()->with('successes', 'successful operation');
         }

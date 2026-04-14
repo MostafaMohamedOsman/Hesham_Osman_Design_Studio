@@ -27,8 +27,9 @@ class ImageController extends Controller
      */
     public function create()
     {
-        $projects = Project::all();
-        return view('image.create', compact('projects'));
+        // Image creation is now handled within the Project creation form.
+        // Redirect to project.create and suggest selecting/adding images there.
+        return redirect()->route('project.create')->with('info', 'Add images while creating a project.');
     }
 
     /**
@@ -38,11 +39,13 @@ class ImageController extends Controller
     {
         $data = [];
         if ($request->has('imgs')) {
+            $max = Image::where('project_id', $request->project_id)->max('sort_order');
+            $next = is_null($max) ? 0 : ($max + 1);
             foreach ($request->imgs as $img) {
-
                 $data = [
                     'img' => $this->uploadPhoto($img, 'images'),
                     'project_id' => $request->project_id,
+                    'sort_order' => $next++,
                 ];
                 Image::create($data);
             }

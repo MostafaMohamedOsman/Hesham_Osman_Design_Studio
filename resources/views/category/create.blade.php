@@ -1,4 +1,7 @@
 @extends('super.super')
+@section('css')
+<link href="{{url('dist\alt\customeEdits.css')}}">
+@endsection
 
 @section('title','Create Category')
 

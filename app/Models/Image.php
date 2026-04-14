@@ -12,6 +12,7 @@ class Image extends Model
     protected $fillable = [
         'img',
         'project_id',
+        'sort_order',
     ];
 
     public function project(){

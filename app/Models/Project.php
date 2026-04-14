@@ -16,7 +16,7 @@ class Project extends Model
     ];
 
     public function images(){
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class)->orderBy('sort_order');
     }
 
     public function category(){

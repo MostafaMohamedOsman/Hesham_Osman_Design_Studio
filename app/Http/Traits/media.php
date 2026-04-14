@@ -5,7 +5,7 @@ trait media
 {
     public function uploadPhoto($img,$dir): string
     {
-        $imgName = uniqid() . '.' . $img->extension();
+        $imgName = uniqid() . '.webp';
         $img->move(public_path("/dist/img/$dir/"), $imgName);
         return $imgName;
     }

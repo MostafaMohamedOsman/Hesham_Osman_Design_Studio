@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --bg: #0f172a;
+
+        --card: #1e293b;
+
+        --text: #f8fafc;
+
+        --muted: #94a3b8;
+
+        --accent: #6366f1;
+
+        --border: #334155;
+    }
+
+    html,
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+    }
+
+    .card,
+    .content-wrapper,
+    .main-sidebar,
+    .small-box {
+        background-color: var(--card);
+        color: var(--text);
+    }
+
+    .form-control {
+        background-color: var(--card) !important;
+        color: var(--text) !important;
+        padding: 1.25rem !important;
+        border-color: rgba(255, 255, 255, 0.06) !important;
+    }
+
+    /* Selects should use compact padding so selected text remains visible */
+    select.form-control {
+        padding: 0.375rem 0.75rem !important;
+        height: 42px !important;
+        line-height: 1.5 !important;
+        -webkit-appearance: menulist-button !important;
+        appearance: menulist-button !important;
+        color: var(--text) !important;
+        background-color: var(--card) !important;
+    }
+
+    /* Ensure option text is readable in dropdowns */
+    select.form-control option {
+        color: var(--text) !important;
+        background-color: var(--card) !important;
+    }
+
+    /* Dark navbar overrides */
+    .main-header.navbar {
+        background-color: #0b1220 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    }
+
+    .main-header.navbar .nav-link,
+    .main-header.navbar .navbar-brand,
+    .main-header.navbar .breadcrumb a,
+    .main-header.navbar .navbar-nav .nav-link {
+        color: var(--text) !important;
+    }
+
+    .main-header.navbar .nav-link:hover,
+    .main-header.navbar .nav-link:focus {
+        color: var(--accent) !important;
+    }
+
+    .form-control#imgs {
+        border: solid wheat 3px;
+        padding: 2px 0 !important;
+    }
+
+    a,
+    .nav-link,
+    .breadcrumb a {
+        color: var(--accent);
+    }
+    .muted {
+        color: var(--muted);
+    }
+}

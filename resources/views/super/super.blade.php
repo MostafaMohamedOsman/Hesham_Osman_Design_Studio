@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,6 +27,16 @@
     <link rel="stylesheet" href="{{url('plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{url('plugins/summernote/summernote-bs4.min.css')}}">
+    <!-- Custome Edits -->
+    <link rel="stylesheet" href="{{url('dist/css/customeEdits.css')}}">
+    <!-- Site icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('dist/img/ms-icon-310x310.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('dist/img/ms-icon-310x310.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('dist/img/ms-icon-310x310.png') }}">
+    <link rel="shortcut icon" href="{{ url('favicon.ico') }}">
+    <meta name="msapplication-TileImage" content="{{ url('dist/img/ms-icon-310x310.png') }}">
+    <meta name="msapplication-TileColor" content="#0b1220">
+    @vite('resources/css/app.css')
     @yield('css')
 </head>
 
@@ -34,7 +45,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{url('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60"
+        <img src="{{url('dist/img/preload-ms-icon-310x310.png')}}" alt="ms-icon-310x310.png" height="60"
              width="60">
     </div>
 
@@ -82,7 +93,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{url('dist/img/ms-icon-310x310.png')}}" class="elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Hesham Osman</a>
@@ -108,7 +119,7 @@
                     </li>
                      <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <i class="nav-icon fas fa-list"></i>
                             <p>
                                 Categories
                                 <i class="right fas fa-angle-left"></i>
@@ -131,7 +142,7 @@
                     </li>
                      <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <i class="nav-icon fas fa-folder-open"></i>
                             <p>
                                 Projects
                                 <i class="right fas fa-angle-left"></i>
@@ -147,14 +158,14 @@
                             <li class="nav-item">
                                 <a href="{{route('project.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Projects</p>
+                                    <p>Create Project</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
                      <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <i class="nav-icon fas fa-image"></i>
                             <p>
                                 Images
                                 <i class="right fas fa-angle-left"></i>
@@ -167,12 +178,12 @@
                                     <p>All Projects Images</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{route('img.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Project Images</p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                 </ul>
@@ -217,7 +228,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2025 <a href="https://github.com/YoussefAbdeen4">Youssef Abdeen</a>&<a href="https://github.com/MostafaMohamedOsman">Mostafa Mohamed Osman</a></strong>
+        <strong>Copyright &copy; 2026 <a href="https://github.com/YoussefAbdeen4">Youssef Abdeen</a>&<a href="https://github.com/MostafaMohamedOsman">Mostafa Mohamed Osman</a></strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 3.2.0
@@ -267,7 +278,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('dist/js/pages/dashboard.js')}}"></script>
 <!-- Scripts -->
-@vite([ 'resources/js/app.js'])
+@vite('resources/js/app.js')
 @yield('js')
 </body>
 

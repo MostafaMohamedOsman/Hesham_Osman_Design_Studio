@@ -39,7 +39,7 @@
         <hr class="mt-4 mb-4">
     @endforeach
 
-    <a href="{{ route('img.create') }}" class="btn btn-success">Create Images</a>
+    <a href="{{ route('project.create') }}" class="btn btn-success">Create Project</a>
 
 @endsection
 

@@ -10,7 +10,7 @@
                 <p>Categories</p>
             </div>
             <div class="icon">
-                <i class="fas fa-box"></i>
+                <i class="fas fa-list"></i>
             </div>
             <a href="{{route('category.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -24,7 +24,7 @@
                 <p>Projects</p>
             </div>
             <div class="icon">
-                <i class="fas fa-tags"></i>
+                <i class="fas fa-folder-open"></i>
             </div>
             <a href="{{route('project.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -38,7 +38,7 @@
                 <p>Images</p>
             </div>
             <div class="icon">
-                <i class="fas fa-th-list"></i>
+                <i class="fas fa-image"></i>
             </div>
             <a href="{{route('img.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>

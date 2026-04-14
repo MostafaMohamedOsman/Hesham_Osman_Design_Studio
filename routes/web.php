@@ -25,6 +25,8 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
     Route::get('/',HomeController::class)->name('home');
     Route::resource('category', CategoryController::class);
     Route::resource('project', ProjectController::class);
+    // Image management (reorder / delete) from project show page
+    Route::post('project/{project}/images', [ProjectController::class, 'updateImages'])->name('project.update_images');
     Route::resource('img', ImageController::class);
 })->middleware('auth');
 
@@ -32,9 +34,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', HomeController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

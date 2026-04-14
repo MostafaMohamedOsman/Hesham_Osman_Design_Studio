@@ -18,7 +18,7 @@ class ProjectResource extends JsonResource
             'Project name'=>$this->name,
             'Project description'=>$this->desc,
             'Project image'=>$this->images->map(function ($image) {
-            return ['image'=>$image->img];
+            return ['image'=>url("dist/img/images/$image->img")];
         }),
         ];
     }

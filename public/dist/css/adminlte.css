@@ -1,10 +1,10 @@
-/*!
+/*
  *   AdminLTE v3.2.0
  *   Author: Colorlib
  *   Website: AdminLTE.io <https://adminlte.io>
  *   License: Open source - MIT <https://opensource.org/licenses/MIT>
  */
-/*!
+/*
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -223,6 +223,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  text-align: match-parent;
 }
 
 label {
@@ -14256,12 +14257,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .image {
     float: none;
   }
-  .sidebar-mini.sidebar-collapse .main-sidebar:not(.sidebar-no-expand):hover, .sidebar-mini.sidebar-collapse .main-sidebar:not(.sidebar-no-expand).sidebar-focused {
-    width: 250px;
-  }
-  .sidebar-mini.sidebar-collapse .main-sidebar:not(.sidebar-no-expand):hover .brand-link, .sidebar-mini.sidebar-collapse .main-sidebar:not(.sidebar-no-expand).sidebar-focused .brand-link {
-    width: 250px;
-  }
+
   .sidebar-mini.sidebar-collapse .main-sidebar:not(.sidebar-no-expand):hover .user-panel, .sidebar-mini.sidebar-collapse .main-sidebar:not(.sidebar-no-expand).sidebar-focused .user-panel {
     text-align: left;
   }

@@ -13,55 +13,91 @@
     @include('includes.includes')
     <h2>Project Name : {{ $project->name }}</h2>
     <h3>Project Description : {{ $project->desc }}</h3>
-        <div class="row">
+    <!-- Image management form -->
+    <form id="image-management-form" action="{{ route('project.update_images', $project->id) }}" method="POST">
+        @csrf
+
+        <div class="row mb-3" id="images-gallery">
             @forelse ($project->images as $image)
-              <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="small-box">
-                        <div class="inner">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 image-item" data-id="{{ $image->id }}">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body p-2 d-flex flex-column">
                             <img src="{{ url("dist/img/images/$image->img") }}" alt="img"
-                                style="width:100%; height:200px; object-fit:cover;" />
+                                class="w-full h-48 object-cover rounded mb-2" style="object-fit:cover;" />
+
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-sm btn-light move-left" title="Move Left">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-light move-right" title="Move Right">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-light delete-image" title="Delete">
+                                    <i class="fas fa-trash-alt text-danger"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="icon">
-                            {{-- <i class="fas fa-box"></i> --}}
-                        </div>
-                        <form class="d-inline" method="post" action="{{ route('img.destroy', $image->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-block mt-2">Delete</button>
-                        </form>
                     </div>
-                </div>  
+
+                    <input type="hidden" name="image_order[]" value="{{ $image->id }}" />
+                </div>
             @empty
                 <h4>No Images</h4>
-            @endforelse 
-                
+            @endforelse
         </div>
+
+        <!-- Deleted images will be appended here as hidden inputs -->
+        <div id="deleted-images-inputs"></div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save mr-1"></i> Save Image Changes
+        </button>
+    </form>
+
+    <hr class="mt-4 mb-4">
         <hr class="mt-4 mb-4">
 
 @endsection
 
-{{-- @section('js')
-    <!-- DataTables  & Plugins -->
-    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ url('plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ url('plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ url('plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ url('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+@section('js')
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        document.addEventListener('DOMContentLoaded', function () {
+            const gallery = document.getElementById('images-gallery');
+            const deletedInputsContainer = document.getElementById('deleted-images-inputs');
+            if (!gallery) return;
+
+            gallery.addEventListener('click', function (e) {
+                const btn = e.target.closest('button');
+                if (!btn) return;
+                const item = btn.closest('.image-item');
+                if (!item) return;
+
+                if (btn.classList.contains('move-left')) {
+                    const prev = item.previousElementSibling;
+                    if (prev && prev.classList && prev.classList.contains('image-item')) {
+                        gallery.insertBefore(item, prev);
+                    }
+                }
+
+                if (btn.classList.contains('move-right')) {
+                    const next = item.nextElementSibling;
+                    if (next && next.classList && next.classList.contains('image-item')) {
+                        gallery.insertBefore(next, item);
+                    }
+                }
+
+                if (btn.classList.contains('delete-image')) {
+                    const id = item.getAttribute('data-id');
+                    // remove item from DOM (this also removes its image_order input)
+                    item.parentNode.removeChild(item);
+                    // append a hidden input to record deletions
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'images_to_delete[]';
+                    input.value = id;
+                    deletedInputsContainer.appendChild(input);
+                }
+            });
         });
     </script>
-@endsection --}}
+@endsection

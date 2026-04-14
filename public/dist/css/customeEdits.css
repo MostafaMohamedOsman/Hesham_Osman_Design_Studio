@@ -1,0 +1,36 @@
+input#imgs,
+input#img {
+    padding: 4px 0 6px 4px !important;
+    border: 1px solid #ced4da !important;
+}
+
+@media (min-width: 992px) {
+  .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .image {
+    float: none;
+    width: 400px !important;
+  }}
+
+.img-item {
+    padding: 6px !important;
+    box-shadow: 0 0 5px rgba(230, 227, 227, 0.61);
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.img-item > div:first-child {
+    width: 100% !important;
+    padding-bottom: 6px !important;
+}
+
+.main-footer {
+  background-color: #0B1220;
+  color: var(--text);
+}
+
+.os-content {
+  background-color: #0B1220 ;
+}
+
+.preloader {
+  background-color: black;
+}
