@@ -11,13 +11,17 @@
 
 @section('content')
     @include('includes.includes')
-    <h2>Project Name : {{ $project->name }}</h2>
-    <h3>Project Description : {{ $project->desc }}</h3>
+        <div class="col-12">
+            <div class="col-6 show">
+                <h2>Project Name : {{ $project->name }}</h2>
+                <h2>Project Description : {{ $project->desc }}</h3>
+            </div>
+        </div>
     <!-- Image management form -->
     <form id="image-management-form" action="{{ route('project.update_images', $project->id) }}" method="POST">
         @csrf
 
-        <div class="row mb-3" id="images-gallery">
+        <div class="row" id="images-gallery">
             @forelse ($project->images as $image)
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4 image-item" data-id="{{ $image->id }}">
                     <div class="card shadow-sm h-100">
@@ -25,14 +29,14 @@
                             <img src="{{ url("dist/img/images/$image->img") }}" alt="img"
                                 class="w-full h-48 object-cover rounded mb-2" style="object-fit:cover;" />
 
-                            <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-sm btn-light move-left" title="Move Left">
+                            <div class="mt-2 d-flex justify-content">
+                                <button type="button" class="mr-2 btn btn-sm btn-light move-left" title="Move Left">
                                     <i class="fas fa-arrow-left"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-light move-right" title="Move Right">
+                                <button type="button" class="mr-2 btn btn-sm btn-light move-right" title="Move Right">
                                     <i class="fas fa-arrow-right"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-light delete-image" title="Delete">
+                                <button type="button" class="mr-2 btn btn-sm btn-light delete-image" title="Delete">
                                     <i class="fas fa-trash-alt text-danger"></i>
                                 </button>
                             </div>

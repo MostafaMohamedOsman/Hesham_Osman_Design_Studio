@@ -15,7 +15,7 @@
         @endif
     </div>
     @include('includes.includes')
-    <form method="POST" action="{{ route('category.update', ['category' => $category->id]) }}" enctype="multipart/form-data">
+    <form id="edit-category-form" method="POST" action="{{ route('category.update', ['category' => $category->id]) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
         <div class="form-row">

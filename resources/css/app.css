@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+}
+
 @layer base {
     :root {
         --bg: #0f172a;
@@ -25,18 +31,22 @@
 
     .card,
     .content-wrapper,
-    .main-sidebar,
     .small-box {
         background-color: var(--card);
         color: var(--text);
     }
 
     .form-control {
-        background-color: var(--card) !important;
+        background-color: var(--bg) !important;
         color: var(--text) !important;
         padding: 1.25rem !important;
         border-color: rgba(255, 255, 255, 0.06) !important;
-    }
+        border-radius: 6px !important;
+        -webkit-border-radius: 6px !important;
+        -moz-border-radius: 6px !important;
+        -ms-border-radius: 6px !important;
+        -o-border-radius: 6px !important;
+}
 
     /* Selects should use compact padding so selected text remains visible */
     select.form-control {
@@ -46,7 +56,6 @@
         -webkit-appearance: menulist-button !important;
         appearance: menulist-button !important;
         color: var(--text) !important;
-        background-color: var(--card) !important;
     }
 
     /* Ensure option text is readable in dropdowns */

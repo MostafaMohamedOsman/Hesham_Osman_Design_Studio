@@ -12,15 +12,15 @@
 @section('content')
     @include('includes.includes')
     <div class="col-12">
-        <div class="col-6">
-            <h2>Category Name : {{ $category->name }}</h2>
-            <h3>Category Description : {{ $category->desc }}</h3>
+        <div class="col-6 show">
+            <h2><span>Category Name:</span> {{ $category->name }}</h2>
+            <h2><span>Category Description:</span> {{ $category->desc }}</h2>
         </div>
         <div class="col-4">
             <img src="{{ url("dist/img/categories/$category->img") }}" alt="{{ $category->name }}" class="w-100" />
         </div>
     </div>
-    <div class="row">
+    <div class="row show">
         @forelse ($category->projects as $project)
             <div class="col-lg-3 col-6">
                 <div class="small-box">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         @empty
-            <h4>No Projects</h4>
+            <h4 class="noProjects">No Projects</h4>
         @endforelse 
     </div>
     <hr class="mt-4 mb-4">
