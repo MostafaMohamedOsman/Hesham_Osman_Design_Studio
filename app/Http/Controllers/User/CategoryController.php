@@ -16,7 +16,8 @@ class CategoryController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::with(['projects.images'])->get();
+
         return $this->dataResponse(CategoryResource::collection($categories));
     }
 }

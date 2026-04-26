@@ -15,9 +15,10 @@ class CategoryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'Category name'=>$this->name,
-            'Category description'=>$this->desc,
-            'Category image'=>url("dist/img/categories/$this->img"),
+            'category_name'=>$this->name,
+            'category_description'=>$this->desc,
+            'category_image'=>url("dist/img/categories/$this->img"),
+            'projects' => ProjectResource::collection($this->whenLoaded('projects')),
         ];
     }
 }

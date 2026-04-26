@@ -26,7 +26,7 @@ class ProjectRequest extends FormRequest
             'desc' => ['required', 'string'],
             'category_id'=>['required', 'integer', 'exists:categories,id'],
             'imgs' => ['nullable', 'array'],
-            'imgs.*' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
+            'imgs.*' => ['image', 'mimes:jpg,jpeg,png,gif,webp', 'max:2048'],
         ];
     }
 }

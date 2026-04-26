@@ -24,7 +24,7 @@ class StoreCaregoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:256', 'min:4'],
             'desc' => ['required', 'string'],
-            'img' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'img' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ];
     }
 }

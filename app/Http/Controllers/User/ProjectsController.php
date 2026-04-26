@@ -17,7 +17,7 @@ class ProjectsController extends Controller
      */
     public function __invoke(Request $request)
     {
-         $projects =  Project::with('images')->get();
-         return $this->dataResponse(ProjectResource::collection($projects));
+        abort(404,"Not Found");
+
     }
 }

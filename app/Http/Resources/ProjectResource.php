@@ -15,9 +15,9 @@ class ProjectResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'Project name'=>$this->name,
-            'Project description'=>$this->desc,
-            'Project image'=>$this->images->map(function ($image) {
+            'project_name'=>$this->name,
+            'project_description'=>$this->desc,
+            'project_image'=>$this->images->map(function ($image) {
             return ['image'=>url("dist/img/images/$image->img")];
         }),
         ];
